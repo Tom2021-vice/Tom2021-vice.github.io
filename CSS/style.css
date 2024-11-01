@@ -1,0 +1,21 @@
+h1{
+    color:red;
+    text-align:center;
+}
+
+*{
+    font-family: 'LXGW WenKai';
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top: 20px;
+
+}
+
+th,td{
+    border:1px solid greenyellow;
+    text-align:center;
+    padding:8px;
+}

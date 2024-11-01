@@ -1,10 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html lang="zn-ch">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./CSS/style.css">
+    <title>汤姆的日记</title>
+</head>
 <body>
-<h2>2023.7.30 在夕阳下一块回家</h2>
-<h1>2023.10.1 一块去北京旅游</h1>
-<h1>2023.10.24 王者五排</h1>
-<h1>……</h1>
-<p>I'm hosted with GitHub Pages.</p>
+    <h1>汤姆的日记</h1>
+    <button onclick="addRow()">新增数据</button>
+    <table id="table">
+        <tr>
+            <th>日期</th>
+            <th>事件</th>
+            <th>操作</th>
+        </tr>
+        <tr>
+            <td>2023.7.30</td>
+            <td>在夕阳下一块回家</td>
+            <td>
+                <button>编辑</button>
+                <button>删除</button>
+            </td>
+        </tr>
+        <tr>
+            <td>2023.10.1</td>
+            <td>一块去北京玩</td>
+            <td>
+                <button>编辑</button>
+                <button>删除</button>
+            </td>
+        </tr>
+        <tr>
+            <td>2023.10.24</td>
+            <td>第一次王者五排</td>
+            <td>
+                <button>编辑</button>
+                <button>删除</button>
+            </td>
+        </tr>
+        <tr>
+            <td>2024.9.29</td>
+            <td>成功推免至中央民族大学</td>
+            <td>
+                <button>编辑</button>
+                <button>删除</button>
+            </td>
+        </tr>
+        <tr>
+            <td>2024.10.28</td>
+            <td>小雨也报了同一个学校，希望她也能考上</td>
+            <td>
+                <button>编辑</button>
+                <button>删除</button>
+            </td>
+        </tr>
+    </table>
+    <script src="./js/table.js"></script>
+
+    <p>I'm hosted with GitHub Pages.</p>
 </body>
 </html>
