@@ -1,10 +1,14 @@
+@font-face {
+    font-family: 'LXGWWenKaiGB';
+    src: url('../font/LXGWWenKaiGB-Regular.ttf');
+}
 h1{
     color:red;
     text-align:center;
 }
 
 *{
-    font-family: 'LXGW WenKai';
+    font-family: 'LXGWWenKaiGB';
 }
 
 table{
@@ -18,4 +22,10 @@ th,td{
     border:1px solid greenyellow;
     text-align:center;
     padding:8px;
+}
+th{
+    background-color: greenyellow;
+}
+button{
+    margin-left: 5px;
 }
