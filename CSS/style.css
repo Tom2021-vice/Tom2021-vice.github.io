@@ -1,31 +1,204 @@
-@font-face {
-    font-family: 'LXGWWenKaiGB';
-    src: url('../font/LXGWWenKaiGB-Regular.ttf');
-}
-h1{
-    color:red;
-    text-align:center;
+/* 引入网络字体 */
+@import url('https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC&display=swap');
+
+/* --- 动画关键帧定义 --- */
+
+/* 动态背景的动画 */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
-*{
-    font-family: 'LXGWWenKaiGB';
+/* 页面加载时，主容器的淡入+上移动画 */
+@keyframes fadeInSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-table{
-    width:100%;
-    border-collapse:collapse;
+/* 新增一行时的动画 */
+@keyframes row-enter-animation {
+    from {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 删除一行时的动画 */
+@keyframes row-exit-animation {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+}
+
+
+/* --- 页面主体样式 --- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'LXGW WenKai TC', 'LXGW WenKai', sans-serif;
+}
+
+body {
+    color: #333;
+    line-height: 1.6;
+    /* 应用动态渐变背景 */
+    background: linear-gradient(-45deg, #a6c1ee, #fbc2eb, #c3cfe2, #f5f7fa);
+    background-size: 400% 400%;
+    animation: gradientBG 20s ease infinite;
+    overflow-x: hidden; /* 防止动画可能导致的滚动条 */
+}
+
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 25px 30px;
+    background-color: rgba(255, 255, 255, 0.85); /* 半透明白色背景，能透出背景色 */
+    border-radius: 12px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+    backdrop-filter: blur(5px); /* 毛玻璃效果 */
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    /* 应用加载动画 */
+    animation: fadeInSlideUp 0.8s ease-out forwards;
+}
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 15px;
+}
+
+/* 修改后的 table 样式 */
+table {
+    width: 100%;
+    /* 将合并的边框改为分离，这是解决问题的关键 */
+    border-collapse: separate; 
+    /* 设置单元格之间的水平和垂直间距 */
+    border-spacing: 8px; 
     margin-top: 20px;
-
+    /* 隐藏表格自身可能带的外边框，让它更干净 */
+    border-style: hidden; 
 }
 
-th,td{
-    border:1px solid greenyellow;
-    text-align:center;
-    padding:8px;
+/* 修改后的 th, td 样式 */
+th, td {
+    padding: 14px 15px;
+    text-align: center;
+    /* 不再需要单独的下边框 */
+    /* border-bottom: 1px solid #ddd; */
+    border-radius: 8px; /* 为每个单元格添加圆角 */
+    background-color: rgba(255, 255, 255, 0.6); /* 给单元格一个半透明背景 */
+    transition: all 0.3s ease; /* 让所有过渡都更平滑 */
+    letter-spacing: 0.5px;
 }
-th{
-    background-color: greenyellow;
+
+th {
+    background-color: transparent; /* 表头透明 */
+    font-weight: bold;
+    color: #333;
 }
-button{
-    margin-left: 5px;
+
+tbody tr {
+    /* 为行动画效果应用占位 */
+    animation-fill-mode: forwards;
+}
+
+/* 应用新增和删除的动画 */
+.row-enter-active {
+    animation: row-enter-animation 0.5s ease-out forwards;
+}
+.row-exit-active {
+    animation: row-exit-animation 0.4s ease-in forwards;
+}
+
+/* 修改后的编辑状态样式 */
+td[contenteditable="true"] {
+    background-color: rgba(0, 123, 255, 0.1);
+    /* 用 box-shadow 替代 outline，可以完美贴合圆角 */
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.6);
+    border-radius: 8px;
+}
+
+/* 修改后的悬停样式 */
+tbody td:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    transform: translateY(-2px); /* 增加轻微上浮效果 */
+}
+
+/* 按钮样式 */
+button {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.25s ease; /* 让所有变化的过渡都更平滑 */
+    margin: 0 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+button:hover {
+    transform: translateY(-2px); /* 悬停时轻微上浮 */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+button:active {
+    transform: scale(0.98) translateY(-1px);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+#add-btn {
+    display: block;
+    width: 100%;
+    background-color: #28a745;
+    color: white;
+    font-size: 16px;
+    padding: 12px;
+}
+
+#add-btn:hover {
+    background-color: #218838;
+}
+
+.btn-edit {
+    background-color: #007bff;
+    color: white;
+}
+.btn-edit:hover {
+    background-color: #0069d9;
+}
+
+.btn-edit.is-editing {
+    background-color: #ffc107;
+    color: #212529;
+}
+.btn-edit.is-editing:hover {
+    background-color: #e0a800;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    color: white;
+}
+.btn-delete:hover {
+    background-color: #c82333;
 }
