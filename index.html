@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zn-ch">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,59 +7,22 @@
     <title>汤姆的日记</title>
 </head>
 <body>
-    <h1>汤姆日记</h1>
-    <button onclick="addRow()">新增数据</button>
-    <table id="table">
-        <tr>
-            <th>日期</th>
-            <th>事件</th>
-            <th>操作</th>
-        </tr>
-        <tr>
-            <td>2023.7.30</td>
-            <td>在夕阳下一块回家</td>
-            <td>
-                <button onclick="editRow(this)">编辑</button><button onclick="deleteRow(this)">删除</button>
-            </td>
-        </tr>
-        <tr>
-            <td>2023.10.1</td>
-            <td>一块去北京玩</td>
-            <td>
-                <button onclick="editRow(this)">编辑</button><button onclick="deleteRow(this)">删除</button>
-            </td>
-        </tr>
-        <tr>
-            <td>2023.10.24</td>
-            <td>第一次王者五排</td>
-            <td>
-                <button onclick="editRow(this)">编辑</button><button onclick="deleteRow(this)">删除</button>
-            </td>
-        </tr>
-        <tr>
-            <td>2024.9.29</td>
-            <td>成功推免至中央民族大学</td>
-            <td>
-                <button onclick="editRow(this)">编辑</button><button onclick="deleteRow(this)">删除</button>
-            </td>
-        </tr>
-        <tr>
-            <td>2024.10.28</td>
-            <td>小雨也报了同一个学校，希望她也能考上</td>
-            <td>
-                <button onclick="editRow(this)">编辑</button><button onclick="deleteRow(this)">删除</button>
-            </td>
-        </tr>
-        <tr>
-            <td>2025.4.18</td>
-            <td>没想到哈基宇真的考上了，可以一块去上学了！</td>
-            <td>
-                <button onclick="editRow(this)">编辑</button><button onclick="deleteRow(this)">删除</button>
-            </td>
-        </tr>
-    </table>
-    <script src="./js/table.js"></script>
+    <div class="container">
+        <h1>汤姆日记</h1>
+        <button id="add-btn" onclick="addRow()">新增一篇日记</button>
+        <table id="table">
+            <thead>
+                <tr>
+                    <th>日期</th>
+                    <th>事件</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
 
-    <p>I'm hosted with GitHub Pages.</p>
+    <script src="./js/table.js"></script>
 </body>
 </html>
